@@ -20,3 +20,12 @@ $ npm publish
     // 해당 파일로 moduel 할 파일
     "main": "index"
 }
+
+"description": "npm date", : npm에 관련된 설명
+
+
+// npm 삭제
+npm unpublish package@version
+
+// npm version update
+npm version patch
