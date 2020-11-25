@@ -10,3 +10,24 @@ const jsAdd = require('js-date-calc');
 jsAdd.dateAddDel('', '', '');
 
 ```
+
+
+### dateAddDelYmsHms
+```js
+
+/**
+ * interval is kind 
+ * year, month, week, day, hour, minute, second
+ * */
+dateAddDelYmsHms('date Start', 'interval', 'number')
+```
+
+### dataUtcChange
+```js
+
+/**
+ * gmt -> utc date change 
+ * i think korea time is world time change
+ */
+dataUtcChange('date Start')
+```

@@ -58,6 +58,27 @@ var app = {
         var data = dateFormetUtcYmdHms(returnData);
 
         return data;
+    },
+    dateAddDelYmsHms : function(dateType, interval, units){
+ 
+        dateType = dateType === undefined ? new Date() : new Date(dateType);
+        interval = interval === undefined ? null : interval;
+        units = units === undefined ? 0 : units;
+
+        switch(String(interval).toLowerCase()) {
+            case 'year'   :  dateType.setFullYear(dateType.getFullYear() + units); checkRollover();  break;
+            case 'quarter':  dateType.setMonth(dateType.getMonth() + 3*units); checkRollover();  break;
+            case 'month'  :  dateType.setMonth(dateType.getMonth() + units); checkRollover();  break;
+            case 'week'   :  dateType.setDate(dateType.getDate() + 7*units);  break;
+            case 'day'    :  dateType.setDate(dateType.getDate() + units);  break;
+            case 'hour'   :  dateType.setTime(dateType.getTime() + units*3600000);  break;
+            case 'minute' :  dateType.setTime(dateType.getTime() + units*60000);  break;
+            case 'second' :  dateType.setTime(dateType.getTime() + units*1000);  break;
+            default       :  dateType;  break;
+        }
+
+        var data = dateFormetYmdHms(new Date(dateType));
+        return data;
     }
 }
 
@@ -98,8 +119,6 @@ dateFormetUtcYmdHms = function(dateType){
 
     return data[0] + ' ' + hms;
 }
-
-app.dataUtmChange('2020-11-24 05:23:42');
 
 
 module.exports = app;
