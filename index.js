@@ -34,6 +34,38 @@ var app = {
         return data;
     },
 
+    dataUtcChange : function(date){
+
+        date = (date === undefined) ? new Date() : new Date(date);
+
+        var returnData = null;
+        
+        if(!Date.prototype.toISOString){
+
+            returnData = date.getUTCFullYear() +
+            '-' + pad(date.getUTCMonth() + 1) +
+            '-' + pad(date.getUTCDate()) +
+            'T' + pad(date.getUTCHours()) +
+            ':' + pad(date.getUTCMinutes()) +
+            ':' + pad(date.getUTCSeconds()) +
+            '.' + (date.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) +
+            'Z';
+    
+        }else{
+            returnData = date.toISOString();
+        }
+
+        var data = dateFormetUtcYmdHms(returnData);
+
+        return data;
+    }
+}
+
+pad = (number) => {
+    if (number < 10) {
+        return '0' + number;
+    }
+    return number;
 }
 
 dateFormetYmdHms = (dateType, type) => {
@@ -57,5 +89,17 @@ dateFormetYmdHms = (dateType, type) => {
 
     return '' + yy + '-' +  mm  + '-' + dd + " " + hh + ":" + mm + ":" + ss;
 }
+
+dateFormetUtcYmdHms = function(dateType){
+
+    var data = dateType.split('T');
+
+    var hms = data[1].substring(0, data[1].indexOf('.'));
+
+    return data[0] + ' ' + hms;
+}
+
+app.dataUtmChange('2020-11-24 05:23:42');
+
 
 module.exports = app;
