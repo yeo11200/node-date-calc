@@ -1,6 +1,6 @@
 {
   "name": "js-calc-date",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./index.js",
   "license": "MIT",
   "engines": [
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/yeo11200/node-date-calc/issues"
   },
-  "homepage": "https://github.com/yeo11200/node-date-calc#readme"
+  "homepage": "https://github.com/yeo11200/node-date-calc#readme",
+  "keywords": [
+    "date", "utc", "formet", "dateAdd"
+  ]
 }
